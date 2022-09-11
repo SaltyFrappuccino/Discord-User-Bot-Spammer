@@ -126,7 +126,7 @@ function start() {
             data.find(str => str.token === current.token).banned = true
             console.log(colors.bold("[ERROR]").red + " - Не удалось найти сервер. Скорей всего, пользователь заблокирован, аккаунту присвоен статус забаненного, перезапустите скрипт.")
             fs.writeFileSync('./data.json', JSON.stringify(data))
-            return process.exit(1)
+            start()
         }
         client.channels.forEach((channel) => {
             if (config.targetCategories.find(str => str === channel.parentID)) {
@@ -170,7 +170,7 @@ function start() {
                     data.find(str => str.token === current.token).banned = true
                     fs.writeFileSync('./data.json', JSON.stringify(data))
                     console.log(colors.bold("[ERROR]").red + " - Канал не найден. Скорей всего аккаунт забанен. Аккаунту присвоен статус забаненного! Перезапустите скрипт")
-                    process.exit()
+                    start()
                 }
                 console.log(colors.bold("[ERROR]").red + " - Канал не найден. Скорей всего аккаунт забанен. До присвоения статуса забанненого: "+errors+'/5')
                 return errors += 1
@@ -200,7 +200,7 @@ function start() {
                     console.log(colors.bold('[ERROR] - Клиент заблокирован! Требуется перезапуск программы.').red)
                     data.find(str => str.token === current.token).banned = true
                     fs.writeFileSync('./data.json', JSON.stringify(data))
-                    return process.exit(1)
+                    start()
                 }
                 
                 // console.log(colors.bold("[~]").yellow + " - Не можем отправить сообщение, пробуем ещё раз.")

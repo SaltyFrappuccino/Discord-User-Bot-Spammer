@@ -1,0 +1,37 @@
+{
+    "tokens": [
+        "NDM1OTExNjA5MzkxNzc1NzQ0.YVBLYA.dEu07h1uA81rOQPbSNpEnnwxUYM",
+        "ODQ2Nzg5NzExMjE3MDMzMjE2.YZgJ4Q.ckKeYcrwZ0iWOGmYS_yrmeGnnvY",
+        "MzM1MjY3MjIzODk3NjM2ODY2.YEQ6SA.6k3oV0wZeWgG29ABThwTQBdJKgc",
+        "MTAxMzk3OTkzMzU2MDc5OTIzMg.GIwEVs.OydeEIftY57Wl3t6LX8quuN7QA7s0IVRzzwOb8",
+        "OTc2MjI5MDMzMjc4ODYxMzgz.GplMHa.KB0b5kBzEfF_e-jV7P9Je1yEe4UwDOnJr5LrQU",
+        "OTgyMDU0NDY0MDkxNDgwMTI0.G7favw.ApT6PzwegN3VncdwFPGYUvxEfRI85v4cQlWv74",
+        "OTgyMDg2NDYzOTQ2NjQ1NTY0.GDG_6A.L8zlkPM06eFMQsFGiep6eTsXhHMZs25KqXpKpg",
+        "OTgyMDUzNzQyNzYzNDcwOTI4.GCdvfc.F08Ch2j5HO0ruJeeLm7Q8eFbGXOwSmOrrzKINE",
+        "OTc1ODA4OTEyOTUzNjAyMDk5.GoYueA.gsm4tBkj2HWno2TDyMjlbdPR45xPg-4Fn6URpc",
+        "OTc1ODA5NjA1MjgyMTg1MjI2.Gv_Cgf.DrGe7V7XVygMc6gTNUsfTcxOMK2T6p-BA6x7mc",
+        "OTc1ODA2ODcxNTUyMjc4NTU5.GjewnF.4glO0WapjQ0-ad56JSN0Js9nwpC46ecmYV1LGk"  
+    ],
+    "targetGuild": "608610149569134619",
+    "targetCategories": [
+     "608612291105128459",
+	"652634648152899604",
+	"668167286217244733",
+	"675341098356310036",
+	"680543415674732566",
+	"688097544034713624",
+	"698164755919142953",
+	"702546494707728384",
+	"713466136137695376",
+	"713971362368323615",
+	"899338749316591636",
+	"908668058170703882",
+	"940552911254085662"    
+	],
+    "sleep": 15000,
+"DMmessage" : "Здравствуйте,вот ссылка на группу : https://vk.com/ragevirt",
+    "interval_per_message": 500,
+    "max_images": 11,
+    "messages": 7,
+    "messageContent": "**ССылка в лс ( работает автоответчик)**\n**Минимальная покупка всего 100.000$**\n**Реально максимальные гарантии а не пустые слова**"
+}

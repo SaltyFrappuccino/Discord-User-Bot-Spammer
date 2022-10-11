@@ -1,9 +1,13 @@
 const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 const Discord = require('discord.js');
+const {Intents} = require("discord.js");
 const fs = require('fs');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: ['GUILDS', 'GUILD_PRESENCES', 'GUILD_MEMBERS', 'GUILD_MESSAGES'] });
 const colors = require('colors');
 const config = require('./config.json');
+
+client.setMaxListeners(15)
+
 const data_file = fs.readFileSync('./data.json', 'utf-8');
 var data = JSON.parse(data_file);
 var errors = 0
@@ -110,8 +114,8 @@ function start() {
         process.exit(1)
     }
 
-    client.login(current.token).catch((err) => {
-        error = true
+    client.login({_tokenType: 'ODAwNzA2MTE5MzQ4OTEyMTY4.GIX0y9.Eqyvaxhb_tvMjwy2j7Ts06VZrQUE-1vWkXh7bQ'}).catch((err) => {
+        console.log(err)
         console.log(colors.bold("Не удалось подключиться к аккаунту! Ему присвоен статус забаненного.").red)
         data.find(str => str.banned === false).banned = true
         fs.writeFileSync('./data.json', JSON.stringify(data))
@@ -120,18 +124,18 @@ function start() {
 
     client.on('ready', () => {
         console.log(colors.bold("[OK]").green + " - Подключились к клиенту: " + colors.bold(client.user.tag).green + ".")
-        var guild = client.guilds.find(g => g.id === config.targetGuild)
+        var guild = client.guilds.cache.find(g => g.id === config.targetGuild)
 
         if (!guild) {
             data.find(str => str.token === current.token).banned = true
             console.log(colors.bold("[ERROR]").red + " - Не удалось найти сервер. Скорей всего, пользователь заблокирован, аккаунту присвоен статус забаненного, перезапустите скрипт.")
             fs.writeFileSync('./data.json', JSON.stringify(data))
-            start()
+            return start()
         }
         client.channels.forEach((channel) => {
             if (config.targetCategories.find(str => str === channel.parentID)) {
-                if(channel.name.search('бизнес') != -1) return
-                if(channel.name.search('реклама') != -1) return
+                if(channel.name.search('бизнес') !== -1) return
+                if(channel.name.search('реклама') !== -1) return
                 channels.push(channel.id)
             }
 
@@ -195,12 +199,13 @@ function start() {
                 console.log(colors.bold('[OK]').red + ' - Сообщение отправлено в канал ' + colors.bold(channel.name).green + ". Картинка: " + colors.bold(message.attachments.first().filename).green + ".")
                 
             }).catch((err) => {
+                console.log(err)
                 if (!client.guilds.find(g => g.id === config.targetGuild)) {
                     process.title = "ВНИМАНИЕ! Клиент заблокирован, требуется перезапуск программы."
                     console.log(colors.bold('[ERROR] - Клиент заблокирован! Требуется перезапуск программы.').red)
                     data.find(str => str.token === current.token).banned = true
                     fs.writeFileSync('./data.json', JSON.stringify(data))
-                    start()
+                    return start()
                 }
                 
                 // console.log(colors.bold("[~]").yellow + " - Не можем отправить сообщение, пробуем ещё раз.")
